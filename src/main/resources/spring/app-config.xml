@@ -9,4 +9,19 @@
 						http://www.springframework.org/schema/context/spring-context.xsd
 						http://www.springframework.org/schema/tx 
 						http://www.springframework.org/schema/tx/spring-tx.xsd">
+	
+	<!-- Test TX Manage -->
+	<bean id="transactionManager"
+          class="org.springframework.batch.support.transaction.ResourcelessTransactionManager" />
+	
+	<!-- In Memory Repository -->
+	<bean id="jobRepository" class="org.springframework.batch.core.repository.support.MapJobRepositoryFactoryBean">
+    	<property name="transactionManager" ref="transactionManager"/>
+	</bean>			
+	
+	<!-- Job Launcher -->			
+	<bean id="jobLauncher" class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
+    	<property name="jobRepository" ref="jobRepository" />
+	</bean>
+	
 </beans>
