@@ -10,7 +10,11 @@
 						http://www.springframework.org/schema/tx 
 						http://www.springframework.org/schema/tx/spring-tx.xsd">
 						
-	<import resource="classpath:spring/app-config.xml"/>
+	<bean id="listenerJobExecution" 
+		class="mx.com.batch1.ListenerJobExecution" />
+		
+	<bean id="helloWorldTasklet"
+		class="mx.com.batch1.HelloWorldTasklet" />
 	
 	
 </beans>

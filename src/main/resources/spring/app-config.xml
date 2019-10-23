@@ -10,14 +10,21 @@
 						http://www.springframework.org/schema/tx 
 						http://www.springframework.org/schema/tx/spring-tx.xsd">
 	
-	<!-- Test TX Manage -->
-	<bean id="transactionManager"
-          class="org.springframework.batch.support.transaction.ResourcelessTransactionManager" />
+	<!--  EXECUTE FROM MAVEN
+		exec:java -Dexec.mainClass=org.springframework.batch.core.launch.support.CommandLineJobRunner -Dexec.args="spring/app-config.xml job"
+	-->
 	
+	<import resource="classpath:spring/beans/app-beans.xml"/>
+	<import resource="classpath:spring/jobs/jobs-context.xml"/>
+		
 	<!-- In Memory Repository -->
 	<bean id="jobRepository" class="org.springframework.batch.core.repository.support.MapJobRepositoryFactoryBean">
     	<property name="transactionManager" ref="transactionManager"/>
-	</bean>			
+	</bean>
+	
+	<!-- Test TX Manage -->
+	<bean id="transactionManager"
+          class="org.springframework.batch.support.transaction.ResourcelessTransactionManager" />			
 	
 	<!-- Job Launcher -->			
 	<bean id="jobLauncher" class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
