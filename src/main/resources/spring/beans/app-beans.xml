@@ -15,6 +15,9 @@
 		
 	<bean id="helloWorldTasklet"
 		class="mx.com.batch1.HelloWorldTasklet" />
+		
+	<bean id="incrementerJobParameters"
+		class="mx.com.batch1.IncrementerJobParameters" />
 	
 	
 </beans>
