@@ -11,11 +11,12 @@
 						http://www.springframework.org/schema/tx/spring-tx.xsd">
 	
 	<!--  EXECUTE FROM MAVEN
-		exec:java -Dexec.mainClass=org.springframework.batch.core.launch.support.CommandLineJobRunner -Dexec.args="spring/app-config.xml job"
+		exec:java -Dexec.mainClass=org.springframework.batch.core.launch.support.CommandLineJobRunner -Dexec.args="spring/app-config.xml job pathFile=assas"
 	-->
 	
 	<import resource="classpath:spring/beans/app-beans.xml"/>
 	<import resource="classpath:spring/jobs/jobs-context.xml"/>
+		
 		
 	<!-- In Memory Repository -->
 	<bean id="jobRepository" class="org.springframework.batch.core.repository.support.MapJobRepositoryFactoryBean">

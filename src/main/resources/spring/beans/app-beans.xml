@@ -13,11 +13,13 @@
 	<bean id="listenerJobExecution" 
 		class="mx.com.batch1.ListenerJobExecution" />
 		
-	<bean id="helloWorldTasklet"
-		class="mx.com.batch1.HelloWorldTasklet" />
-		
 	<bean id="incrementerJobParameters"
 		class="mx.com.batch1.IncrementerJobParameters" />
+		
+	<bean id="createSheatTasklet" class="mx.com.batch1.CreateSheatTasklet" scope="step">
+		<property name="filePath" value="#{jobParameters['pathFile']}" />
+		<property name="dateFile" value="#{jobParameters['dateFile']}" />
+	</bean>
 	
 	
 </beans>

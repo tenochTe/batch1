@@ -9,28 +9,19 @@ public class ListenerJobExecution implements JobExecutionListener {
 	
 	@Override
 	public void afterJob(JobExecution jobExecution) {
-		jobExecution
-		.getStepExecutions()
-			.stream()
-				.forEach( c ->  {
-
-					
-					
-				});
+		jobExecution.getStepExecutions().stream().forEach(System.out::println);
 
 	}
 	
 
 	@Override
-	public void beforeJob(JobExecution jobExecution) {
-
-		System.out.println("#####> "+System.getProperty("user.home")+File.separator);
-		
+	public void beforeJob(JobExecution jobExecution) {		
 		String dirPath = System.getProperty("user.home").concat(File.separator).concat("fichTemp");
 		File dir =new File(dirPath);
 		 
 		if (!dir.exists() )
-			 dir.mkdir();
+			 dir.mkdir();	
+		
 					
 	}
 	
