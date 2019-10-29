@@ -16,9 +16,12 @@
 	<bean id="incrementerJobParameters"
 		class="mx.com.batch1.IncrementerJobParameters" />
 		
+		
+	<!-- Job Parameters come in from class path execution, because the main class is org.springframework.batch.core.launch.support.CommandLineJobRunner
+		If the job work with external lunch, It'll necessary execute from job.run(jobRepository, jobParameters);
+	 -->
 	<bean id="createSheatTasklet" class="mx.com.batch1.CreateSheatTasklet" scope="step">
-		<property name="filePath" value="#{jobParameters['pathFile']}" />
-		<property name="dateFile" value="#{jobParameters['dateFile']}" />
+		<property name="filePath" value="#{jobParameters['filePath']}" />
 	</bean>
 	
 	

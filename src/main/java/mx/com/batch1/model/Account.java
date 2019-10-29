@@ -34,6 +34,17 @@ public class Account {
 		this.isActive = isActive;
 	}
 	
+	@Override
+	public String toString() {
+		return new StringBuilder()
+				.append(this.customer)
+				.append("|")
+				.append(this.account)
+				.append("|")
+				.append(this.isActive)
+				.toString();
+	}
+	
 	
 	
 
