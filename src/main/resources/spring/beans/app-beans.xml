@@ -20,9 +20,30 @@
 	<!-- Job Parameters come in from class path execution, because the main class is org.springframework.batch.core.launch.support.CommandLineJobRunner
 		If the job work with external lunch, It'll necessary execute from job.run(jobRepository, jobParameters);
 	 -->
-	<bean id="createSheatTasklet" class="mx.com.batch1.CreateSheatTasklet" scope="step">
+	<bean id="createSheatTasklet" class="mx.com.batch1.tasklet.CreateSheatTasklet" scope="step">
 		<property name="filePath" value="#{jobParameters['filePath']}" />
 	</bean>
+	
+	<bean id="sheetReader" class="org.springframework.batch.item.file.FlatFileItemReader" scope="step">
+		<property name="resource" value="#{jobParameters['filePath']}" />
+		<property name="linesToSkip" value="1" />
+		<property name="lineMapper">
+			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+				<property name="lineTokenizer">
+					<bean class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+						<property name="names" value="CUSTOMER,ACCOUNT,IS_ACTIVE" />
+						<property name="delimiter" value="|" />
+					</bean>
+				</property>
+				<property name="fieldSetMapper">
+					<bean class="mx.com.batch1.mapper.AccountMapper" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="sheetWriter" class="mx.com.batch1.writer.AccountWriter" />
+		
 	
 	
 </beans>

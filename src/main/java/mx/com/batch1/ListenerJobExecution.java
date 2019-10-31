@@ -12,6 +12,13 @@ public class ListenerJobExecution implements JobExecutionListener {
 	@Override
 	public void afterJob(JobExecution jobExecution) {
 		jobExecution.getStepExecutions().stream().forEach(System.out::println);
+		
+		
+		jobExecution.getStepExecutions().stream().forEach(c -> {
+			if ( c.getStepName().contains("2") ) {
+					System.out.println( "##########>: "+c.getJobExecution()  );
+			}
+		});
 	}
 	
 

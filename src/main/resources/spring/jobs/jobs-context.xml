@@ -18,11 +18,11 @@
 			<tasklet ref="createSheatTasklet" />
 		</step>
 		
-<!-- 		<step id="step_2"> -->
-<!-- 			<tasklet> -->
-<!-- 				<chunk reader="" /> -->
-<!-- 			</tasklet> -->
-<!-- 		</step> -->
+		<step id="step_2">
+			<tasklet>
+				<chunk reader="sheetReader" writer="sheetWriter" commit-interval="100" />
+			</tasklet>
+		</step>
 		
 	</job>
 	

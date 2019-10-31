@@ -1,4 +1,4 @@
-package mx.com.batch1;
+package mx.com.batch1.tasklet;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -26,19 +26,19 @@ public class CreateSheatTasklet implements Tasklet {
 									.concat(Constants.SEPARATOR.getValue() )
 									.concat(Constants.TMP_DIR.getValue() )
 									.concat(Constants.SEPARATOR.getValue() )
-									.concat("test_file_")
-									.concat(new SimpleDateFormat("dd-MM-yy").format(new Date()))
+									.concat("test_file")
+//									.concat(new SimpleDateFormat("dd-MM-yy").format(new Date()))
 									.concat(".csv")
 								 );
 		
 		
-		for ( int x = 0; x < 1_000; x++ ) {
-			Account o =new Account();
-				o.setCustomer( String.valueOf( (int) ( Math.random() * ( (1000 - 0) + 1 ) ) ) );
-				o.setAccount(String.valueOf( (int) ( Math.random() * ( (100_000 - 50_000) +1 ) ) + 50_000 ) );
-				o.setIsActive( "Y" );
-				
-				byte[] stringBytes = "\n".concat(o.toString()).getBytes();
+		for ( int x = 0; x < 1_00; x++ ) {
+			Account account =new Account.Builder( String.valueOf( (int) ( Math.random() * ( (1000 - 0) + 1 ) ) ) )
+					.withAccount( String.valueOf( (int) ( Math.random() * ( (100_000 - 50_000) +1 ) ) + 50_000 ) )
+					.isActive( "Y")
+					.build();
+			
+				byte[] stringBytes = "\n".concat(account.toString()).getBytes();
 				fos.write(stringBytes);
 		}
 		
@@ -48,7 +48,7 @@ public class CreateSheatTasklet implements Tasklet {
 		chunkContext.getStepContext().getStepExecution().getJobParameters();
 		
 		 
-		return RepeatStatus.CONTINUABLE;
+		return RepeatStatus.FINISHED;
 	}
 	
 	public void setFilePath(String filePath) {

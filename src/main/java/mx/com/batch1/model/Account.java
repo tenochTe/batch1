@@ -6,33 +6,40 @@ public class Account {
 	private String account;
 	private String isActive;
 	
-	public Account() {
+	private Account() {
 		
 	}
-
-	public String getCustomer() {
-		return customer;
+	
+	public static class Builder {
+		
+		private String customer;
+		private String account;
+		private String isActive;
+		
+		public Builder(String customer) {
+			this.customer=customer;
+		}
+		
+		public Builder withAccount(String account) {
+			this.account=account;
+			return this;
+		}
+		
+		public Builder isActive(String isActive) {
+			this.isActive=isActive;
+			return this;
+		}
+		
+		public Account build() {
+			Account account =new Account();
+				account.account = this.account;
+				account.customer = this.customer;
+				account.isActive = this.isActive;
+			return account;
+		}
+		
 	}
-
-	public void setCustomer(String customer) {
-		this.customer = customer;
-	}
-
-	public String getAccount() {
-		return account;
-	}
-
-	public void setAccount(String account) {
-		this.account = account;
-	}
-
-	public String getIsActive() {
-		return isActive;
-	}
-
-	public void setIsActive(String isActive) {
-		this.isActive = isActive;
-	}
+		
 	
 	@Override
 	public String toString() {
@@ -44,8 +51,5 @@ public class Account {
 				.append(this.isActive)
 				.toString();
 	}
-	
-	
-	
 
 }

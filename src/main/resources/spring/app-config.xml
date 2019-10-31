@@ -11,7 +11,7 @@
 						http://www.springframework.org/schema/tx/spring-tx.xsd">
 	
 	<!--  EXECUTE FROM MAVEN
-		exec:java -Dexec.mainClass=org.springframework.batch.core.launch.support.CommandLineJobRunner -Dexec.args="spring/app-config.xml job pathFile=assas"
+		exec:java -Dexec.mainClass=org.springframework.batch.core.launch.support.CommandLineJobRunner -Dexec.args="spring/app-config.xml job pathFile=file:///C:/Users/xmy3087/fichTemp/test_file.csv"
 	-->
 	
 	<import resource="classpath:spring/beans/app-beans.xml"/>
