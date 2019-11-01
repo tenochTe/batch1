@@ -13,12 +13,30 @@ public class ListenerJobExecution implements JobExecutionListener {
 	public void afterJob(JobExecution jobExecution) {
 		jobExecution.getStepExecutions().stream().forEach(System.out::println);
 		
+/**		
+		Map<String, Object> item1 =new HashMap<>();
+			item1.put("param1", "param1");
+			item1.put("param2", "param2");
+			item1.put("param3", "param3");
+			item1.put("param4", "param4");
+			item1.put("param5", "param5");			
+		Map<String, Object> item2 =new HashMap<>();
+			item1.put("param6", "param6");
+			item1.put("param7", "param7");
+			item1.put("param8", "param8");
+			item1.put("param9", "param9");
+			item1.put("param10", "param10");
+		List<Map<String, Object>> listItems =new ArrayList<>();
+			listItems.add(item1);
+			listItems.add(item2);
+		Map<String, Object>[] arrMap = listItems.stream().toArray(HashMap[]::new);
+//		Map<String, Object>[] arrMap = listItems.stream().toArray(Map[]::new);		
+		for ( Map<String, Object> map : arrMap) {
+			map.entrySet().forEach(c -> System.out.println(c.getKey().concat(" - ").concat( (String)c.getValue() ) ));
+		}
+*/
 		
-		jobExecution.getStepExecutions().stream().forEach(c -> {
-			if ( c.getStepName().contains("2") ) {
-					System.out.println( "##########>: "+c.getJobExecution()  );
-			}
-		});
+
 	}
 	
 

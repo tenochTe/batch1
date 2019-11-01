@@ -20,7 +20,11 @@
 		
 		<step id="step_2">
 			<tasklet>
-				<chunk reader="sheetReader" writer="sheetWriter" commit-interval="100" />
+				<chunk 
+					reader="sheetReader" 
+					writer="sheetWriter" 
+					commit-interval="100">
+				</chunk>
 			</tasklet>
 		</step>
 		
